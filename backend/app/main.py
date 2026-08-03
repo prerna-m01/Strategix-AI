@@ -1,12 +1,20 @@
 from fastapi import FastAPI
 
+from backend.app.api.router import router
+from backend.app.config.settings import settings
+
 app = FastAPI(
-    title="Strategix AI",
-    version="0.1.0"
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+    debug=settings.DEBUG,
 )
 
+app.include_router(router)
+
+
 @app.get("/")
-def home():
+async def root():
     return {
-        "message": "Welcome to Strategix AI 🚀"
+        "message": "Welcome to Strategix AI",
+        "version": settings.APP_VERSION,
     }
