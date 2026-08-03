@@ -2,7 +2,9 @@ from fastapi import FastAPI
 
 from backend.app.api.router import router
 from backend.app.config.settings import settings
+from backend.app.core.logger import logger
 
+logger.info("Strategix AI Started Successfully")
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
