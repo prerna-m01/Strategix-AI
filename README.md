@@ -2,33 +2,44 @@
 
 > **AI Executive Decision Intelligence Platform**
 >
-> **Case Study #1:** Global Marketing & Communications Enterprise (Inspired by Publicis Groupe)
+> **Case Study #1:** Global Marketing & Communications Enterprise *(Inspired by Publicis Groupe)*
+
+> 🚧 **Building in Public**
+>
+> Strategix AI is being developed as a production-grade AI platform that demonstrates enterprise software engineering, Business Intelligence, Multi-Agent AI, and Executive Decision Intelligence. Follow the journey from backend architecture to a fully autonomous AI business strategist.
 
 ---
 
-## 📌 Overview
+# 📌 Overview
 
-Strategix AI is an enterprise-grade AI platform that combines **Business Intelligence, Machine Learning, Multi-Agent AI, Retrieval-Augmented Generation (RAG), and Executive Analytics** to help business leaders make data-driven strategic decisions.
+Strategix AI is an enterprise-grade AI platform that combines **Business Intelligence, Machine Learning, Multi-Agent AI, Retrieval-Augmented Generation (RAG), and Executive Analytics** to help executives make data-driven strategic decisions.
 
-Unlike traditional dashboards that only display metrics, Strategix AI enables AI agents to analyze business data, collaborate across departments, and generate executive recommendations.
+Unlike traditional dashboards that only display metrics, Strategix AI enables specialized AI agents to analyze enterprise data, collaborate across departments, identify business risks, forecast future performance, and generate executive recommendations.
+
+The project is designed using production software engineering principles and modern AI architecture.
 
 ---
 
-## 🎯 Problem Statement
+# 🎯 Problem Statement
 
-Large enterprises operate across multiple business units, regions, and clients. While organizations have access to dashboards and reports, executive teams still spend significant time:
+Large enterprises generate enormous volumes of operational and financial data across multiple business units, regions, products, and clients.
+
+Although organizations use BI dashboards and reporting tools, executive teams still spend considerable time:
 
 - Interpreting business metrics
 - Connecting insights across departments
-- Identifying risks
+- Understanding business risks
 - Forecasting future performance
-- Prioritizing strategic actions
+- Identifying growth opportunities
+- Prioritizing strategic initiatives
 
-Strategix AI addresses this challenge by orchestrating specialized AI agents that analyze enterprise data and provide actionable recommendations.
+Business leaders often receive data but lack actionable intelligence.
+
+Strategix AI addresses this challenge by orchestrating multiple AI agents that collaborate to transform enterprise data into strategic recommendations.
 
 ---
 
-## 💡 Solution
+# 💡 Solution
 
 Strategix AI integrates:
 
@@ -37,61 +48,97 @@ Strategix AI integrates:
 - 📈 Machine Learning
 - 📚 Retrieval-Augmented Generation (RAG)
 - 📉 Executive Dashboards
-- 🧠 Business Strategy Insights
+- 🧠 Strategic Decision Intelligence
+- 🔍 Explainable AI Recommendations
 
-into one unified decision intelligence platform.
+into one unified Executive Decision Intelligence Platform.
 
 ---
 
-# 🏗 Architecture
+# 🏗 System Architecture
 
-```
-                Executive User
-                      │
-                      ▼
-              React Frontend
-                      │
-                      ▼
-             FastAPI Backend
-                      │
-                      ▼
-         LangGraph Agent Orchestrator
-                      │
-      ┌─────────┬──────────┬──────────┐
-      ▼         ▼          ▼          ▼
- Finance   Marketing   Operations   Client
-  Agent      Agent        Agent      Agent
-      │         │          │          │
-      └─────────┴──────────┴──────────┘
-                      │
-                      ▼
-             CEO Strategy Agent
-                      │
-                      ▼
-        Strategic Business Recommendations
-                      │
-       PostgreSQL • ChromaDB • LangSmith
-                      │
-                      ▼
-                  Power BI
+```text
+                    Executive User
+                           │
+                           ▼
+                   React Frontend
+                           │
+                           ▼
+                  FastAPI Backend
+                           │
+                           ▼
+             LangGraph Agent Orchestrator
+                           │
+        ┌────────┬────────┬────────┬────────┐
+        ▼        ▼        ▼        ▼
+   Finance   Marketing Operations Client Success
+    Agent      Agent      Agent       Agent
+        │        │        │        │
+        └────────┴────────┴────────┴────────┘
+                           │
+                           ▼
+                 CEO Strategy Agent
+                           │
+                           ▼
+            Executive Strategic Recommendations
+                           │
+         PostgreSQL • ChromaDB • LangSmith
+                           │
+                           ▼
+                      Power BI
 ```
 
 ---
 
 # ✨ Features
 
-- Executive Decision Intelligence
-- Multi-Agent AI Architecture
-- Business KPI Monitoring
-- Financial Analytics
-- Campaign Performance Analysis
-- Revenue Forecasting
+## Executive Intelligence
+
+- Executive Decision Support
+- AI Business Strategy Recommendations
+- Cross-functional Business Analysis
+- KPI Monitoring
+- Executive Reports
 - Risk Detection
-- AI Strategy Recommendations
-- Power BI Dashboards
+- Opportunity Identification
+
+## Business Intelligence
+
+- Revenue Analytics
+- Marketing Performance
+- Client Intelligence
+- Operational Insights
+- Department Performance
+- Financial Analytics
+- Workforce Analytics
+
+## Artificial Intelligence
+
+- Multi-Agent AI Architecture
+- LangGraph Workflows
+- Retrieval-Augmented Generation
+- Business Knowledge Base
+- AI Reasoning
+- Executive Summaries
+- Strategic Planning Assistance
+
+## Machine Learning
+
+- Revenue Forecasting
+- Customer Segmentation
+- Campaign Prediction
+- Risk Prediction
+- Trend Forecasting
+- Time Series Analysis
+
+## Platform
+
+- REST APIs
+- PostgreSQL
+- Docker Support
 - LangSmith Monitoring
-- RAG-powered Executive Knowledge Base
-- Dockerized Deployment
+- Production-ready Architecture
+- Power BI Dashboards
 
 ---
 
@@ -100,17 +147,19 @@ into one unified decision intelligence platform.
 ## Backend
 
 - FastAPI
-- SQLAlchemy
-- PostgreSQL
+- SQLAlchemy 2.0
+- PostgreSQL 18
 - Alembic
-- Pydantic
+- Pydantic Settings
+- Uvicorn
 
-## AI
+## AI & LLM
 
-- LangGraph
 - LangChain
-- Gemini
-- FAISS / ChromaDB
+- LangGraph
+- Google Gemini
+- ChromaDB
+- FAISS
 - LangSmith
 
 ## Machine Learning
@@ -119,20 +168,20 @@ into one unified decision intelligence platform.
 - XGBoost
 - Prophet
 
-## Data
+## Data Processing
 
 - Pandas
 - NumPy
-
-## Visualization
-
-- Power BI
 
 ## Frontend
 
 - React
 - TypeScript
 - Tailwind CSS
+
+## Visualization
+
+- Power BI
 
 ## Deployment
 
@@ -148,34 +197,33 @@ into one unified decision intelligence platform.
 Strategix-AI/
 
 backend/
-    app/
-        api/
-        auth/
-        config/
-        core/
-        database/
-        models/
-        repositories/
-        schemas/
-        services/
-        utils/
-        main.py
-
+│
+├── app/
+│   ├── api/
+│   ├── auth/
+│   ├── config/
+│   ├── core/
+│   ├── database/
+│   ├── models/
+│   ├── repositories/
+│   ├── schemas/
+│   ├── services/
+│   ├── utils/
+│   └── main.py
+│
 frontend/
 
 agents/
 
-docs/
-
-data/
+ml/
 
 datasets/
-
-ml/
 
 powerbi/
 
 deployment/
+
+docs/
 
 tests/
 
@@ -186,87 +234,234 @@ README.md
 
 # 📊 Business Domains
 
+Strategix AI is designed to support multiple enterprise business functions.
+
 - Finance
 - Marketing
-- Client Success
 - Operations
 - Human Resources
-- AI Strategy
+- Client Success
+- Strategy
 - Forecasting
 - Risk Management
+- Executive Analytics
 
 ---
 
 # 🤖 AI Agents
 
-- CEO Strategy Agent
-- Finance Agent
-- Marketing Intelligence Agent
-- Operations Agent
-- Client Success Agent
-- Forecast Agent
-- Risk Assessment Agent
-- AI Innovation Agent
+| Agent | Responsibility |
+|---------|----------------|
+| CEO Strategy Agent | Executive recommendations |
+| Finance Agent | Financial analysis |
+| Marketing Intelligence Agent | Campaign performance |
+| Operations Agent | Operational efficiency |
+| Client Success Agent | Client analytics |
+| Forecast Agent | Predictive forecasting |
+| Risk Assessment Agent | Business risk analysis |
+| AI Innovation Agent | AI opportunity discovery |
 
 ---
 
-# 📅 Roadmap
+# ⚙️ Local Development
+
+## Clone Repository
+
+```bash
+git clone https://github.com/prerna-m01/Strategix-AI.git
+
+cd Strategix-AI
+```
+
+---
+
+## Create Virtual Environment
+
+```bash
+uv venv
+```
+
+Activate Environment
+
+### Windows
+
+```powershell
+.venv\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
+---
+
+## Install Dependencies
+
+```bash
+uv sync
+```
+
+---
+
+## Environment Configuration
+
+Create a `.env` file in the project root.
+
+```env
+APP_NAME=Strategix AI
+APP_VERSION=0.1.0
+
+HOST=127.0.0.1
+PORT=8000
+
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=strategix_ai
+DB_USER=postgres
+DB_PASSWORD=your_password
+
+SECRET_KEY=your_secret_key
+
+DEBUG=True
+ENVIRONMENT=development
+```
+
+---
+
+## Run Backend
+
+```bash
+uv run uvicorn backend.app.main:app --reload
+```
+
+Open:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+# ✅ Completed Milestones
+
+## Sprint 1 — Backend Foundation
+
+Completed
+
+- ✅ Production-grade project architecture
+- ✅ FastAPI setup
+- ✅ PostgreSQL integration
+- ✅ SQLAlchemy ORM
+- ✅ psycopg v3 configuration
+- ✅ Pydantic Settings
+- ✅ Environment variable management
+- ✅ Dependency Injection
+- ✅ Database session management
+- ✅ Connection pooling
+- ✅ Pytest configuration
+- ✅ Database connectivity testing
+- ✅ GitHub repository setup
+
+---
+
+# 📈 Development Progress
+
+| Sprint | Status |
+|----------|----------|
+| Sprint 1 — Backend Foundation | ✅ Completed |
+| Sprint 2 — Business Data Models | 🟡 In Progress |
+| Sprint 3 — ETL & Data Engineering | ⏳ Planned |
+| Sprint 4 — Power BI Integration | ⏳ Planned |
+| Sprint 5 — Machine Learning | ⏳ Planned |
+| Sprint 6 — Multi-Agent AI | ⏳ Planned |
+| Sprint 7 — RAG Knowledge Base | ⏳ Planned |
+| Sprint 8 — Frontend Dashboard | ⏳ Planned |
+| Sprint 9 — Production Deployment | ⏳ Planned |
+
+---
+
+# 📝 Development Log
 
 ## Sprint 1
-- Backend Foundation
-- PostgreSQL
-- Authentication
-- Docker
 
-## Sprint 2
-- Data Engineering
-- ETL Pipeline
-- Power BI
+### Completed
 
-## Sprint 3
-- Machine Learning
-- Forecasting
-- Predictive Analytics
+- Designed enterprise backend architecture
+- Configured FastAPI
+- Connected PostgreSQL
+- Configured SQLAlchemy
+- Configured Pydantic Settings
+- Implemented Session Management
+- Configured Dependency Injection
+- Connected PostgreSQL using psycopg
+- Configured pytest
+- Successfully validated database connectivity
 
-## Sprint 4
-- Multi-Agent AI
-- LangGraph
-- RAG
-- LangSmith
+---
 
-## Sprint 5
-- Frontend
-- Deployment
-- Documentation
+### Engineering Challenges Solved
+
+- Python package discovery
+- SQLAlchemy dialect configuration
+- psycopg driver compatibility
+- PostgreSQL authentication
+- Database URL configuration
+- Environment variable management
+- Database connectivity debugging
+
+---
+
+# 🛣 Engineering Practices
+
+Strategix AI follows enterprise software engineering principles.
+
+- Production-ready architecture
+- Repository Pattern
+- Service Layer Pattern
+- Dependency Injection
+- Environment-based configuration
+- Modular APIs
+- Automated Testing
+- Database Versioning
+- Structured Logging
+- Observability
+- AI Agent Orchestration
+- CI/CD Ready
 
 ---
 
 # 📖 Case Study
 
-This project is demonstrated using a **case study inspired by the publicly available reports, AI strategy, and business model of Publicis Groupe**.
+Strategix AI demonstrates an enterprise decision intelligence workflow using a case study inspired by the publicly available reports, business strategy, and AI initiatives of **Publicis Groupe**.
 
-All operational datasets used within the platform are synthetic and created for educational and portfolio purposes.
+All operational datasets are synthetic and created exclusively for educational and portfolio purposes.
 
 ---
 
 # 🚀 Current Status
 
-🟢 Sprint 1 — Backend Foundation (In Progress)
+## Sprint 2 — Business Data Models
+
+### Current Focus
+
+- Company Model
+- Department Model
+- Business KPI Model
+- Alembic Migrations
+- CRUD APIs
+- Repository Layer
+- Observability
+- Health Monitoring
 
 ---
 
-# 👩‍💻 Author
+# 🌍 Future Vision
 
-**Prerna Mishra**
+Strategix AI is designed as a reusable enterprise AI platform that can be adapted across industries.
 
-- GitHub: https://github.com/prerna-m01
-- LinkedIn: https://linkedin.com/in/prernamishra01
-
----
-
-## ⭐ Future Vision
-
-Strategix AI is designed as a reusable executive decision intelligence platform that can be extended across industries, including:
+Potential domains include:
 
 - Marketing & Communications
 - Retail
@@ -274,9 +469,31 @@ Strategix AI is designed as a reusable executive decision intelligence platform 
 - Healthcare
 - Manufacturing
 - Supply Chain
+- Consulting
+- Telecommunications
 
 ---
 
-## 📜 License
+# 👩‍💻 Author
 
-MIT License
+**Prerna Mishra**
+
+### GitHub
+
+https://github.com/prerna-m01
+
+### LinkedIn
+
+https://linkedin.com/in/prernamishra01
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+# ⭐ Support
+
+If you found this project useful or interesting, consider giving it a ⭐ on GitHub. Your support helps improve the project and motivates future development.
