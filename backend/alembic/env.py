@@ -7,6 +7,16 @@ from alembic import context
 from backend.app.database.base import Base
 from backend.app.models import *
 
+from alembic import context
+from backend.app.config.settings import settings
+
+config = context.config
+
+config.set_main_option(
+    "sqlalchemy.url",
+    settings.DATABASE_URL
+)
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
