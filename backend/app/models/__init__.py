@@ -1,1 +1,3 @@
-from .company import Company
+from backend.app.models.company import Company
+
+__all__ = ["Company"]
