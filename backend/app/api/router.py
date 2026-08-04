@@ -1,12 +1,9 @@
 from fastapi import APIRouter
 
+from backend.app.api.company import router as company_router
+from backend.app.api.health import router as health_router
+
 router = APIRouter()
 
-
-@router.get("/health")
-async def health():
-    return {
-        "status": "healthy",
-        "project": "Strategix AI",
-        "version": "0.1.0",
-    }
+router.include_router(health_router)
+router.include_router(company_router)
