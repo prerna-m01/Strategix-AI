@@ -58,39 +58,39 @@ into one unified Executive Decision Intelligence Platform.
 # 🏗 System Architecture
 
 ```text
-                                        Executive User
+                    Executive User
                            │
                            ▼
-                   React Frontend
+                React + Power BI Dashboard
                            │
                            ▼
-                  FastAPI Backend
+                     FastAPI Backend
                            │
-            Authentication & APIs
+      ┌────────────────────┼────────────────────┐
+      ▼                    ▼                    ▼
+ Authentication      Business APIs        AI APIs
                            │
                            ▼
-             LangGraph Orchestrator
+                LangGraph Orchestrator
                            │
       ┌────────┬────────┬────────┬────────┐
       ▼        ▼        ▼        ▼
  Finance   Marketing Operations Client Success
   Agent      Agent      Agent       Agent
-      │        │        │        │
-      └────────┴────────┴────────┘
+      └────────┴────────┴──────────┘
                    │
                    ▼
            CEO Strategy Agent
                    │
                    ▼
-      Executive Recommendations
+      Strategic Recommendations
                    │
-        ┌──────────┴──────────┐
-        ▼                     ▼
- PostgreSQL             ChromaDB (RAG)
-        │
-        ▼
-     Power BI
-            
+      ┌────────────┼─────────────┐
+      ▼            ▼             ▼
+ PostgreSQL    ChromaDB      ML Models
+                   │
+              LangSmith
+          (Observability)
 ```
 
 ---
