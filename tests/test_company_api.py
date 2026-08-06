@@ -6,5 +6,5 @@ client = TestClient(app)
 
 
 def test_get_companies():
-    response = client.get("/companies/")
+    response = client.get("/api/v1/companies/")
     assert response.status_code == 200
