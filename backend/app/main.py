@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from backend.app.api.router import router
 from backend.app.config.settings import settings
 from backend.app.core.logger import logger
+from backend.app.middleware.logging import LoggingMiddleware
 
 from backend.app.core.exceptions import (
     DuplicateResourceException,
@@ -39,6 +40,7 @@ app.add_exception_handler(
 )
 
 app.include_router(router)
+app.add_middleware(LoggingMiddleware)
 
 
 @app.get("/")

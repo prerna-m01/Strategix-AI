@@ -2,8 +2,10 @@ from sqlalchemy.orm import Session
 
 from backend.app.core.exceptions import (
     DuplicateResourceException,
+    ResourceNotFoundException,
     ValidationException,
 )
+from backend.app.core.logger import logger
 from backend.app.models.company import Company
 from backend.app.repositories.company_repository import CompanyRepository
 
@@ -14,10 +16,25 @@ class CompanyService:
         self.repository = CompanyRepository(db)
 
     def get_all_companies(self):
+        """
+        Return all companies.
+        """
+        logger.info("Fetching all companies")
         return self.repository.get_all()
 
     def get_company(self, company_id: int):
-        return self.repository.get_by_id(company_id)
+        """
+        Return a company by ID.
+        """
+        logger.info(f"Fetching company with ID: {company_id}")
+
+        company = self.repository.get_by_id(company_id)
+
+        if not company:
+            logger.warning(f"Company with ID {company_id} not found")
+            raise ResourceNotFoundException("Company")
+
+        return company
 
     def create_company(
         self,
@@ -26,18 +43,27 @@ class CompanyService:
         headquarters: str,
         ceo: str,
     ):
-        # Validation
+        """
+        Create a new company after validation.
+        """
+
+        # Validate input
         if not name.strip():
             raise ValidationException(
                 "Company name cannot be empty."
             )
 
-        # Duplicate check
+        # Check duplicate company
         existing_companies = self.repository.get_all()
 
-        for company in existing_companies:
-            if company.name.lower() == name.lower():
+        for existing_company in existing_companies:
+            if existing_company.name.lower() == name.lower():
+                logger.warning(
+                    f"Duplicate company creation attempted: {name}"
+                )
                 raise DuplicateResourceException("Company")
+
+        logger.info(f"Creating company: {name}")
 
         company = Company(
             name=name,
@@ -46,4 +72,10 @@ class CompanyService:
             ceo=ceo,
         )
 
-        return self.repository.create(company)
+        company = self.repository.create(company)
+
+        logger.info(
+            f"Company created successfully: {company.name}"
+        )
+
+        return company
