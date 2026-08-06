@@ -1,2 +1,3 @@
-from backend.app.models.company import Company
-from backend.app.models.department import Department
+from .business_kpi import BusinessKPI
+from .company import Company
+from .department import Department

@@ -23,3 +23,9 @@ class Department(Base):
         "Company",
         back_populates="departments",
     )
+
+    kpis = relationship(
+        "BusinessKPI",
+        back_populates="department",
+        cascade="all, delete-orphan",
+    )
