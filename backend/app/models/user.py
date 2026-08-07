@@ -29,7 +29,14 @@ class User(Base):
         nullable=False,
     )
 
+    role = Column(
+        String(50),
+        default="Analyst",
+        nullable=False,
+    )
+
     is_active = Column(
         Boolean,
         default=True,
+        nullable=False,
     )
