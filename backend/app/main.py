@@ -3,7 +3,6 @@ from fastapi import FastAPI
 from backend.app.api.router import router
 from backend.app.config.settings import settings
 from backend.app.core.logger import logger
-from backend.app.middleware.logging import LoggingMiddleware
 
 from backend.app.core.exceptions import (
     DuplicateResourceException,
@@ -17,12 +16,16 @@ from backend.app.core.handlers import (
     validation_handler,
 )
 
+
 logger.info("Strategix AI Started Successfully")
+
+
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
     debug=settings.DEBUG,
 )
+
 
 app.add_exception_handler(
     ResourceNotFoundException,
@@ -39,8 +42,8 @@ app.add_exception_handler(
     validation_handler,
 )
 
+
 app.include_router(router)
-app.add_middleware(LoggingMiddleware)
 
 
 @app.get("/")

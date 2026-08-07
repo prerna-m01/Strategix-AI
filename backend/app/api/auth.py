@@ -6,6 +6,7 @@ from backend.app.database.session import get_db
 from backend.app.schemas.auth import LoginRequest, TokenResponse
 from backend.app.services.user_service import UserService
 
+
 router = APIRouter(
     prefix="/auth",
     tags=["Authentication"],
@@ -31,11 +32,12 @@ def login(
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid email or password",
+            headers={"WWW-Authenticate": "Bearer"},
         )
 
     token = create_access_token(
         {
-            "sub": user.email
+            "sub": user.email,
         }
     )
 
