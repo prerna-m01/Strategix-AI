@@ -29,3 +29,9 @@ class Department(Base):
         back_populates="department",
         cascade="all, delete-orphan",
     )
+
+    employees = relationship(
+    "Employee",
+    back_populates="department",
+    cascade="all, delete-orphan",
+    )

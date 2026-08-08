@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
+from sqlalchemy import String
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.app.database.base import Base
 
@@ -7,17 +7,31 @@ from backend.app.database.base import Base
 class Company(Base):
     __tablename__ = "companies"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id: Mapped[int] = mapped_column(primary_key=True, index=True)
 
-    name = Column(String(255), nullable=False)
+    name: Mapped[str] = mapped_column(
+        String(255),
+        nullable=False,
+        unique=True,
+    )
 
-    industry = Column(String(100), nullable=False)
+    industry: Mapped[str] = mapped_column(
+        String(255),
+        nullable=False,
+    )
 
-    headquarters = Column(String(150), nullable=False)
+    headquarters: Mapped[str] = mapped_column(
+        String(255),
+        nullable=False,
+    )
 
-    ceo = Column(String(150), nullable=False)
+    ceo: Mapped[str] = mapped_column(
+        String(255),
+        nullable=False,
+    )
 
-    departments = relationship(
+    # One Company -> Many Departments
+    departments: Mapped[list["Department"]] = relationship(
         "Department",
         back_populates="company",
         cascade="all, delete-orphan",

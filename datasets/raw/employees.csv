@@ -1,0 +1,6 @@
+employee_id,full_name,email,department,job_title,location,employment_type,hire_date,annual_salary
+EMP001,Aarav Sharma,aarav.sharma@example.com,Marketing,Marketing Manager,Delhi,Full-Time,2022-04-12,1800000
+EMP002,Ananya Gupta,ananya.gupta@example.com,Finance,Financial Analyst,Mumbai,Full-Time,2023-01-18,1200000
+EMP003,Rohan Mehta,rohan.mehta@example.com,Operations,Operations Manager,Bangalore,Full-Time,2021-08-05,1650000
+EMP004,Meera Kapoor,meera.kapoor@example.com,Marketing,Campaign Strategist,Delhi,Full-Time,2024-02-10,1100000
+EMP005,Arjun Verma,arjun.verma@example.com,Finance,Finance Manager,Paris,Full-Time,2020-06-20,2100000

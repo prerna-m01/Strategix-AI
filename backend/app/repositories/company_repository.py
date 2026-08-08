@@ -18,23 +18,28 @@ class CompanyRepository:
             .first()
         )
 
-    def create(
-        self,
-        name: str,
-        industry: str,
-        headquarters: str,
-        ceo: str,
-    ):
-
-        company = Company(
-            name=name,
-            industry=industry,
-            headquarters=headquarters,
-            ceo=ceo,
+    def get_by_name(self, name: str):
+        return (
+            self.db.query(Company)
+            .filter(Company.name.ilike(name))
+            .first()
         )
 
+    def create(self, company: Company):
         self.db.add(company)
         self.db.commit()
         self.db.refresh(company)
 
         return company
+
+    def update(self, company: Company):
+        self.db.commit()
+        self.db.refresh(company)
+
+        return company
+
+    def delete(self, company: Company):
+        self.db.delete(company)
+        self.db.commit()
+
+        return True
