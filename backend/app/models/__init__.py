@@ -3,6 +3,7 @@ from .department import Department
 from .employee import Employee
 from .business_kpi import BusinessKPI
 from .user import User
+from .client import Client
 
 __all__ = [
     "Company",
@@ -10,4 +11,5 @@ __all__ = [
     "Employee",
     "BusinessKPI",
     "User",
+    "Client",
 ]

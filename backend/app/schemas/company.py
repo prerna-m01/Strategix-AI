@@ -33,6 +33,8 @@ class CompanyUpdate(BaseModel):
         max_length=255,
     )
 
+    
+
 
 class CompanyResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)

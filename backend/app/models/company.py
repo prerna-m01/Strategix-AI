@@ -36,3 +36,9 @@ class Company(Base):
         back_populates="company",
         cascade="all, delete-orphan",
     )
+
+    clients: Mapped[list["Client"]] = relationship(
+        "Client",
+        back_populates="company",
+        cascade="all, delete-orphan",
+    )
