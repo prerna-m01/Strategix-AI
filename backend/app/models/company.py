@@ -32,13 +32,19 @@ class Company(Base):
 
     # One Company -> Many Departments
     departments: Mapped[list["Department"]] = relationship(
-        "Department",
+    "Department",
+    back_populates="company",
+    cascade="all, delete-orphan",
+)
+
+    clients: Mapped[list["Client"]] = relationship(
+        "Client",
         back_populates="company",
         cascade="all, delete-orphan",
     )
 
-    clients: Mapped[list["Client"]] = relationship(
-        "Client",
+    projects: Mapped[list["Project"]] = relationship(
+        "Project",
         back_populates="company",
         cascade="all, delete-orphan",
     )

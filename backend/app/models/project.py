@@ -6,8 +6,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from backend.app.database.base import Base
 
 
-class Client(Base):
-    __tablename__ = "clients"
+class Project(Base):
+    __tablename__ = "projects"
 
     id: Mapped[int] = mapped_column(
         Integer,
@@ -15,7 +15,7 @@ class Client(Base):
         index=True,
     )
 
-    client_id: Mapped[str] = mapped_column(
+    project_id: Mapped[str] = mapped_column(
         String(50),
         unique=True,
         nullable=False,
@@ -28,60 +28,60 @@ class Client(Base):
         index=True,
     )
 
-    client_name: Mapped[str] = mapped_column(
-        String(255),
-        nullable=False,
-    )
-
-    industry: Mapped[str] = mapped_column(
-        String(255),
-        nullable=False,
-    )
-
-    contact_person: Mapped[str] = mapped_column(
-        String(255),
-        nullable=False,
-    )
-
-    email: Mapped[str] = mapped_column(
-        String(255),
+    client_id: Mapped[int] = mapped_column(
+        ForeignKey("clients.id"),
         nullable=False,
         index=True,
     )
 
-    location: Mapped[str] = mapped_column(
+    project_name: Mapped[str] = mapped_column(
         String(255),
         nullable=False,
     )
 
-    contract_start_date: Mapped[date] = mapped_column(
-        Date,
-        nullable=False,
-    )
-
-    contract_end_date: Mapped[date | None] = mapped_column(
-        Date,
+    description: Mapped[str | None] = mapped_column(
+        String(1000),
         nullable=True,
     )
 
-    annual_contract_value: Mapped[float] = mapped_column(
-        Numeric(14, 2),
+    project_type: Mapped[str] = mapped_column(
+        String(100),
         nullable=False,
     )
 
     status: Mapped[str] = mapped_column(
         String(50),
         nullable=False,
-        default="active",
+        default="planned",
+    )
+
+    start_date: Mapped[date] = mapped_column(
+        Date,
+        nullable=False,
+    )
+
+    end_date: Mapped[date | None] = mapped_column(
+        Date,
+        nullable=True,
+    )
+
+    budget: Mapped[float] = mapped_column(
+        Numeric(14, 2),
+        nullable=False,
     )
 
     company = relationship(
         "Company",
-        back_populates="clients",
+        back_populates="projects",
     )
 
-    projects = relationship(
-        "Project",
-        back_populates="client",
+    client = relationship(
+        "Client",
+        back_populates="projects",
+    )
+
+    campaigns = relationship(
+        "Campaign",
+        back_populates="project",
         cascade="all, delete-orphan",
     )
