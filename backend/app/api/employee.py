@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
 from backend.app.auth.dependencies import get_current_user
@@ -29,6 +29,20 @@ def get_employees(
 
     return service.get_all_employees()
 
+@router.get(
+    "/department/{department_id}",
+    response_model=list[EmployeeResponse],
+)
+def get_department_employees(
+    department_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    service = EmployeeService(db)
+
+    return service.get_department_employees(
+        department_id=department_id,
+    )
 
 @router.get(
     "/{employee_id}",
@@ -47,6 +61,7 @@ def get_employee(
 @router.post(
     "/",
     response_model=EmployeeResponse,
+    status_code=status.HTTP_201_CREATED,
 )
 def create_employee(
     employee: EmployeeCreate,

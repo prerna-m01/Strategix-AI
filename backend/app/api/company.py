@@ -10,6 +10,7 @@ from backend.app.schemas.company import (
     CompanyUpdate,
 )
 from backend.app.services.company_service import CompanyService
+from backend.app.services.employee_service import EmployeeService
 
 
 router = APIRouter(
@@ -29,6 +30,21 @@ def get_companies(
     service = CompanyService(db)
 
     return service.get_all_companies()
+
+
+@router.get(
+    "/{company_id}/employees",
+)
+def get_company_employees(
+    company_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    service = EmployeeService(db)
+
+    return service.get_company_employees(
+        company_id=company_id,
+    )
 
 
 @router.get(

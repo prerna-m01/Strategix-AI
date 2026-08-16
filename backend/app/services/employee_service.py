@@ -106,3 +106,15 @@ class EmployeeService:
         )
 
         return employee
+    def get_company_employees(self, company_id: int):
+        return self.repository.get_by_company(
+        company_id=company_id,
+    )
+    def get_department_employees(self, department_id: int):
+        logger.info(
+            f"Fetching employees for department: {department_id}"
+        )
+
+        return self.repository.get_by_department(
+            department_id=department_id
+        )

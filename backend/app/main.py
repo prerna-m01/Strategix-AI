@@ -25,7 +25,10 @@ app = FastAPI(
 )
 
 
-# Exception handlers
+# ============================================================
+# Exception Handlers
+# ============================================================
+
 app.add_exception_handler(
     ResourceNotFoundException,
     resource_not_found_handler,
@@ -42,9 +45,16 @@ app.add_exception_handler(
 )
 
 
-# API routes
+# ============================================================
+# API Routes
+# ============================================================
+
 app.include_router(api_router)
 
+
+# ============================================================
+# Root Endpoint
+# ============================================================
 
 @app.get("/")
 async def root():
