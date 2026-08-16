@@ -1,6 +1,6 @@
 import pandas as pd
 import pytest
-
+from backend.app.etl.loaders import load_employees
 from backend.app.etl.transformers import (
     clean_column_names,
     remove_empty_rows,
@@ -92,3 +92,25 @@ def test_validate_empty_dataset():
     with pytest.raises(ValueError):
 
         validate_not_empty(df)
+
+def test_process_employee_records(tmp_path):
+
+    csv_file = tmp_path / "employees.csv"
+
+    csv_file.write_text(
+        "employee_id,full_name,email,department_id,"
+        "job_title,location,employment_type,hire_date,"
+        "annual_salary\n"
+        "EMP001,Alice Smith,alice@example.com,1,"
+        "Engineer,Delhi,Full-Time,2026-01-15,750000\n"
+    )
+
+    from backend.app.etl.pipeline import process_employee_csv
+
+    records = process_employee_csv(csv_file)
+
+    assert len(records) == 1
+    assert records[0]["employee_id"] == "EMP001"
+    assert records[0]["full_name"] == "Alice Smith"
+    assert records[0]["department_id"] == 1
+    assert records[0]["annual_salary"] == 750000

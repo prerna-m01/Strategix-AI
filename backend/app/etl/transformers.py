@@ -20,3 +20,20 @@ def remove_empty_rows(
 ) -> pd.DataFrame:
 
     return df.dropna(how="all").reset_index(drop=True)
+
+def transform_employee_records(
+    df: pd.DataFrame,
+) -> list[dict]:
+    records = df.copy()
+
+    records["hire_date"] = pd.to_datetime(
+        records["hire_date"]
+    ).dt.date
+
+    records["annual_salary"] = pd.to_numeric(
+        records["annual_salary"]
+    )
+
+    return records.to_dict(
+        orient="records"
+    )
